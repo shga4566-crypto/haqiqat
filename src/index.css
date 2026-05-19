@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: "Noto Sans Arabic", "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Amiri", serif;
+  
+  /* Primary Colors */
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-gold: var(--gold);
+  --color-gold-dark: var(--gold-dark);
+  --color-accent: var(--accent);
+  
+  /* Material 3-like surface colors */
+  --color-surface: #ffffff;
+  --color-surface-dark: #121212;
+  --color-on-surface: #1c1c1c;
+  --color-on-surface-dark: #e1e1e1;
+}
+
+@layer base {
+  :root {
+    /* Default Green Islamic Theme */
+    --primary: #052e16;    
+    --primary-light: #14532d;
+    --gold: #fbbf24;       
+    --gold-dark: #b45309;
+    --accent: #f59e0b;
+  }
+
+  .theme-blue {
+    --primary: #0f172a;
+    --primary-light: #1e3a8a;
+    --gold: #60a5fa;
+    --gold-dark: #2563eb;
+    --accent: #3b82f6;
+  }
+
+  .theme-purple {
+    --primary: #2e1065;
+    --primary-light: #4c1d95;
+    --gold: #d8b4fe;
+    --gold-dark: #9333ea;
+    --accent: #a855f7;
+  }
+
+  .theme-crimson {
+    --primary: #4c0519;
+    --primary-light: #881337;
+    --gold: #fca5a5;
+    --gold-dark: #e11d48;
+    --accent: #f43f5e;
+  }
+
+  body {
+    @apply antialiased transition-colors duration-300;
+    direction: rtl;
+  }
+}
+
+.islamic-gradient-bg {
+  background: radial-gradient(circle at 50% 0%, var(--primary-light) 0%, var(--primary) 100%);
+}
+
+.gold-text-gradient {
+  background: linear-gradient(to bottom, var(--gold), var(--gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .gold-text-gradient {
+  background: linear-gradient(to bottom, #fff, var(--gold), var(--gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-card {
+  @apply bg-black/5 backdrop-blur-md border border-black/10;
+}
+
+.dark .glass-card, .glass-card-dark {
+  @apply bg-black/40 backdrop-blur-md border border-white/10;
+}
+
+/* Hide scrollbars but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.bottom-nav-shadow {
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+}
