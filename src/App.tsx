@@ -30,30 +30,33 @@ function AppContent() {
   }, []);
 
   return (
-    <div className={`min-h-[100dvh] ${settings.theme === 'dark' ? 'bg-primary text-white dark' : 'bg-white text-black'}`}>
+    <div className={`min-h-[100dvh] ${settings.theme === 'dark' ? 'bg-primary text-white dark' : 'bg-[#f3f5f4] text-black'}`}>
       <AnimatePresence>
         {showSplash && <SplashScreen />}
       </AnimatePresence>
 
-      <div className="w-full sm:max-w-md sm:mx-auto sm:border-x sm:border-black/5 dark:sm:border-white/10 relative min-h-[100dvh] shadow-2xl bg-white dark:bg-primary/50 overflow-x-hidden pt-safe pb-safe pb-20">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={location.pathname}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Routes location={location}>
-              <Route path="/" element={<Home />} />
-              <Route path="/categories" element={<Categories />} />
-              <Route path="/category/:catId" element={<CategoryDetail />} />
-              <Route path="/search" element={<Search />} />
-              <Route path="/favorites" element={<Favorites />} />
-              <Route path="/settings" element={<Settings />} />
-            </Routes>
-          </motion.div>
-        </AnimatePresence>
+      <div className="w-full sm:max-w-md sm:mx-auto sm:border-x sm:border-black/5 dark:sm:border-white/10 relative h-[100dvh] flex flex-col shadow-4xl bg-white dark:bg-primary/45 backdrop-blur-[2px] overflow-hidden pt-safe pb-safe transition-colors duration-300">
+        <div className="flex-1 overflow-y-auto pb-24 scroll-smooth">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="min-h-full"
+            >
+              <Routes location={location}>
+                <Route path="/" element={<Home />} />
+                <Route path="/categories" element={<Categories />} />
+                <Route path="/category/:catId" element={<CategoryDetail />} />
+                <Route path="/search" element={<Search />} />
+                <Route path="/favorites" element={<Favorites />} />
+                <Route path="/settings" element={<Settings />} />
+              </Routes>
+            </motion.div>
+          </AnimatePresence>
+        </div>
         
         <BottomNav />
         <ExitPrompt />

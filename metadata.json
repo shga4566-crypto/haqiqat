@@ -2,5 +2,5 @@
   "name": "ښکلې وینا وي",
   "description": "د زده کونکو لپاره د پښتو الهامي ویناوو يو عصري اپلیکیشن چې د علم په لاره کې ورسره مرسته کوي.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
